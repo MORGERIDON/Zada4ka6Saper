@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Zada4ka6Saper:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Zada4ka6Saper_jar</output-path>
+    <root id="archive" name="Zada4ka6Saper.jar">
+      <element id="module-output" name="Zada4ka6Saper" />
+    </root>
+  </artifact>
+</component>
