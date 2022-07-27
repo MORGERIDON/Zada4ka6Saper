@@ -4,8 +4,7 @@ class Bomb {
     private Matrix bombMap;
     private int totalBombs;
 
-    Bomb(int totalBombs)
-    {
+    Bomb(int totalBombs) {
         this.totalBombs = totalBombs;
         fixBombsCount();
     }
@@ -22,11 +21,10 @@ class Bomb {
         return bombMap.get(coord);
     }
 
-    private void fixBombsCount()
-    {
-        int maxBombs=Ranges.getSize().x*Ranges.getSize().y/2;
-        if (totalBombs>maxBombs)
-            totalBombs=maxBombs;
+    private void fixBombsCount() {
+        int maxBombs = Ranges.getSize().x * Ranges.getSize().y / 2;
+        if (totalBombs > maxBombs)
+            totalBombs = maxBombs;
     }
 
     private void placeBomb() {
