@@ -13,6 +13,7 @@ public class JavaSweeper extends JFrame {
     private Game game;
 
     private JPanel panel;
+    private JLabel label;
     private final int COLS = 9;
     private final int ROWS = 9;
     private final int BOMBS = 10;
@@ -26,11 +27,17 @@ public class JavaSweeper extends JFrame {
         game = new Game(COLS, ROWS, BOMBS);
         game.start();
         setImages();
+        initLabel();
         initPanel();
         initFrame();
 
     }
 
+    private void initLabel()
+    {
+        label=new JLabel("Welcome!");
+        add (label, BorderLayout.SOUTH);
+    }
     private void initPanel() {
 
         panel = new JPanel() {
@@ -53,6 +60,13 @@ public class JavaSweeper extends JFrame {
                     game.pressLeftButton(coord);
                 if (e.getButton() == MouseEvent.BUTTON3)
                     game.pressRightButton(coord);
+                if (e.getButton() == MouseEvent.BUTTON2)
+                    game.start();
+                try {
+                    label.setText (getMessage());
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
                 panel.repaint();
 
             }
@@ -65,15 +79,28 @@ public class JavaSweeper extends JFrame {
 
     }
 
+    private String getMessage() throws Exception{
+
+        switch (game.getState()) {
+            case PLAYED:
+                return "Think twice!";
+            case BOMBED:
+                return "YOU LOSE! BIG BA-DA-BOOM!";
+            case WINNER:
+                return "CONGRATULATIONS!";
+        }
+        throw new Exception("Это ещё что за дичь?");
+    }
+
     private void initFrame() {
 
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setTitle("Java Sweeper");
-        setLocationRelativeTo(null);
         setResizable(false);
         setVisible(true);
-        setIconImage(getImage("icon"));
         pack();
+        setLocationRelativeTo(null);
+        setIconImage(getImage("icon"));
     }
 
     private void setImages() {
