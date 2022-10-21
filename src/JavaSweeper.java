@@ -33,11 +33,11 @@ public class JavaSweeper extends JFrame {
 
     }
 
-    private void initLabel()
-    {
-        label=new JLabel("Welcome!");
-        add (label, BorderLayout.SOUTH);
+    private void initLabel() {
+        label = new JLabel("Welcome!");
+        add(label, BorderLayout.SOUTH);
     }
+
     private void initPanel() {
 
         panel = new JPanel() {
@@ -63,7 +63,7 @@ public class JavaSweeper extends JFrame {
                 if (e.getButton() == MouseEvent.BUTTON2)
                     game.start();
                 try {
-                    label.setText (getMessage());
+                    label.setText(getMessage());
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
@@ -79,7 +79,7 @@ public class JavaSweeper extends JFrame {
 
     }
 
-    private String getMessage() throws Exception{
+    private String getMessage() throws Exception {
 
         switch (game.getState()) {
             case PLAYED:
@@ -109,13 +109,9 @@ public class JavaSweeper extends JFrame {
     }
 
     private Image getImage(String name) {
-
-        String filename = "C:\\Users\\Morgeridon\\IdeaProjects\\Zada4ka6Saper\\res\\img\\"
-                + name.toLowerCase() + ".png";
-//        System.out.println(filename);
-        ImageIcon icon = new ImageIcon(filename);
+        String filename = "img/" + name.toLowerCase() + ".png";
+        ImageIcon icon = new ImageIcon(getClass().getResource(filename));
         return icon.getImage();
-
     }
 
 
